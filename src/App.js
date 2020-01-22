@@ -101,7 +101,7 @@ handleIncrement=(e)=>{
           children ++
           this.setState({small:small,medium:medium,large:large,children:children})
         }
-        else if(!(small*150 + medium*200 + large*300 + 50 > 1000)){
+        else if(!(small*150 + medium*200 + large*300 + 50 > 1000 )){
           large = large + (medium - 1)/2
           medium = 1
           children ++
@@ -130,10 +130,11 @@ handleIncrement=(e)=>{
     }
     else{
       if(!(small*150 + medium*200 + large*300 + 100 > 1000)){
-        medium = medium - 1
-        large ++
-        adults ++
-        this.setState({medium:medium,large:large,adults:adults})
+          medium = medium - 1
+          large ++
+          adults ++
+          this.setState({medium:medium,large:large,adults:adults})
+
         }
     }
   }
@@ -165,7 +166,7 @@ else if(e.target.id=="medium"){
         adults = adults -1 
         this.setState({medium:medium,adults:adults})
       }
-      else{
+      else if(children>=2){
         children = children - 2
         this.setState({children:children,medium:medium})
       }
@@ -187,14 +188,16 @@ else if(e.target.id=="large"){
     }
     else if(adults<=2){
       large = large - 1
-      if(adults==2){
+      if(adults==2 && children>=2){
         adults = adults -1
         children = children - 2
         this.setState({adults:adults,children:children,large:large})
       }
       else if(adults ==1){
-        children = children - 4
-        this.setState({children:children,large:large})
+        if(children>=4){
+          children = children - 4
+          this.setState({children:children,large:large})
+        }
       }
     }
   }
@@ -270,9 +273,9 @@ else if(e.target.id=="adult"){
                     SMALL
                     </div>
                     <div className="btn">
-                    <FontAwesomeIcon className ="dec" icon={faMinusCircle} id="small" onClick={(e)=>this.handleDecreament(e)} size='1x'/>
+                    <FontAwesomeIcon className = {this.state.small ==0 || this.state.small*150 + this.state.medium*200 + this.state.large*300 < 350 ? "disable" : "dec"} icon={faMinusCircle} id="small" onClick={(e)=>this.handleDecreament(e)} size='1x'/>
                       <p className="count">{this.state.small}</p>
-                    <FontAwesomeIcon className ="inc" icon={faPlusCircle} id="small" onClick={(e)=>this.handleIncrement(e)} size='1x'/>
+                    <FontAwesomeIcon className ={(this.state.small*150 + this.state.medium*200+ this.state.large*300 >=900) ? "disable" : "inc"} icon={faPlusCircle} id="small" onClick={(e)=>this.handleIncrement(e)} size='1x'/>
                     </div>
                   </div>
                   <div className="medium">
@@ -283,9 +286,9 @@ else if(e.target.id=="adult"){
                   MEDIUM
                     </div>
                     <div className="btn">
-                    <FontAwesomeIcon className = "dec" icon={faMinusCircle} id="medium" onClick={(e)=>this.handleDecreament(e)} size='1x'/>
+                    <FontAwesomeIcon className = { (this.state.small*150 + this.state.medium*200 + this.state.large*300 < 400 || this.state.medium==0) ? "disable" : "dec"}  icon={faMinusCircle} id="medium" onClick={(e)=>this.handleDecreament(e)} size='1x'/>
                     <p className="count">{this.state.medium}</p>
-                    <FontAwesomeIcon className = "inc" icon={faPlusCircle} id="medium" onClick={(e)=>this.handleIncrement(e)}  size='1x'/>
+                    <FontAwesomeIcon className = {(this.state.small*150 + this.state.medium*200+ this.state.large*300 >=900) ? "disable" : "inc"} icon={faPlusCircle} id="medium" onClick={(e)=>this.handleIncrement(e)}  size='1x'/>
                     </div>
                   </div>
                   <div className="large">
@@ -296,9 +299,9 @@ else if(e.target.id=="adult"){
                     LARGE
                     </div>
                     <div className="btn">
-                    <FontAwesomeIcon className="dec" icon={faMinusCircle} id="large" onClick={(e)=>this.handleDecreament(e)} size='1x'/>
+                    <FontAwesomeIcon className={ (this.state.small*150 + this.state.medium*200 + this.state.large*300 < 500 || this.state.large ==0) ? "disable" : "dec"} icon={faMinusCircle} id="large" onClick={(e)=>this.handleDecreament(e)} size='1x'/>
                       <p className="count">{this.state.large}</p>
-                    <FontAwesomeIcon className="inc" icon={faPlusCircle} id="large" onClick={(e)=>this.handleIncrement(e)} size='1x'/>
+                    <FontAwesomeIcon className={(this.state.small*150 + this.state.medium*200+ this.state.large*300 >=800) ? "disable" : "inc"} icon={faPlusCircle} id="large" onClick={(e)=>this.handleIncrement(e)} size='1x'/>
                     </div>
                   </div>
             </div>
@@ -309,9 +312,9 @@ else if(e.target.id=="adult"){
             <span>ADULTS</span>
             </div>
             <div className="btn">
-            <FontAwesomeIcon className="dec" icon={faMinusCircle} id="adult" onClick={(e)=>this.handleDecreament(e)} size='1x'/>
+            <FontAwesomeIcon className={this.state.adults==1 || this.state.small*150 + this.state.medium*200 + this.state.large*300 <400 ? "disable":"dec"} icon={faMinusCircle} id="adult" onClick={(e)=>this.handleDecreament(e)} size='1x'/>
             <p className="count">{this.state.adults}</p>
-            <FontAwesomeIcon className="inc" icon={faPlusCircle} id="adult" onClick={(e)=>this.handleIncrement(e)}  size='1x'/>
+            <FontAwesomeIcon className={(this.state.small*150 + this.state.medium*200+ this.state.large*300 >=900) ? "disable" : "inc"} icon={faPlusCircle} id="adult" onClick={(e)=>this.handleIncrement(e)}  size='1x'/>
             </div>
           </div>
           <div className="children">
@@ -322,7 +325,7 @@ else if(e.target.id=="adult"){
             <div className="btn">
             <FontAwesomeIcon className="dec" icon={faMinusCircle} id="children" onClick={(e)=>this.handleDecreament(e)} size='1x'/>
             <p className="count">{this.state.children}</p>
-            <FontAwesomeIcon className="inc" icon={faPlusCircle} id="children" onClick={(e)=>this.handleIncrement(e)}  size='1x'/>
+            <FontAwesomeIcon className={(this.state.small*150 + this.state.medium*200+ this.state.large*300 >950 || this.state.children ==10) ? "disable" : "inc"} icon={faPlusCircle} id="children" onClick={(e)=>this.handleIncrement(e)}  size='1x'/>
             </div>
           </div>
       </div>
