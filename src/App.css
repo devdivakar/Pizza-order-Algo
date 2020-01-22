@@ -1,0 +1,164 @@
+.App {
+  text-align: center;
+}
+.bold {
+  margin-left: 4%;
+  font-weight: 700;
+}
+.top-bold {
+  margin-left: 1%;
+  font-weight: 700;
+}
+.md {
+  font-size: large;
+}
+.svg{
+  user-select: none;
+}
+.lg {
+  font-size: x-large;
+}
+.inc{
+  color: #ee4a5e;
+  cursor: pointer;
+}
+.dec{
+  cursor: pointer;
+}
+.disable{
+  color: #7e7e7e;
+}
+.count{
+  user-select: none;
+  display: flex;
+  margin-top:0px;
+  margin-bottom: 0px;
+}
+span{
+  margin: 25px;
+  user-select:none;
+}
+.order {
+  display: flex;
+}
+.btn {
+  display: flex;
+  width: 85px;
+  justify-content: space-between;
+}
+.top-title {
+  text-align: start;
+  max-width: 70%;
+  margin: auto;
+  display: flex;
+  color: #26388d;
+  padding:3%;
+  user-select: none;
+}
+.bottom-title{
+  text-align: start;
+  max-width: 70%;
+  margin: auto;
+  display: flex;
+  color: #26388d;
+  padding:3%;
+  user-select: none;
+  justify-content: space-between;
+}
+.buttons-segment {
+  width: 31%;
+}
+.small {
+  padding: 7px;
+  display: flex;
+  justify-content: space-between;
+}
+.medium {
+  padding: 7px;
+  display: flex;
+  justify-content: space-between;
+}
+.large {
+  padding: 7px;
+  display: flex;
+  justify-content: space-between;
+}
+.pizza-counter-wrapper {
+  color: #26388d;
+  font-family: Lato, sans-serif;
+  font-weight: 600;
+  border: .5px #26388d double;
+  max-width: 70%;
+  margin: auto;
+  background: linear-gradient(5deg, #ffffff 60%, #f2f3fc 60%);
+}
+.adults {
+  border-bottom: .02px #26388d double;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.children {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.pizza-counter {
+  border-bottom: .02px #26388d double;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+@media only screen and (max-width: 938px) {
+  .buttons-segment {
+    width: 100%;
+}
+.pizza-counter {
+  border-bottom: .02px #26388d double;
+  padding: 15px;
+  display: flex;
+  justify-content: end;
+}
+.pizza-counter-wrapper {
+  color: #26388d;
+  font-family: Lato, sans-serif;
+  font-weight: 600;
+  border: .5px #26388d double;
+  max-width: 97%;
+  margin: auto;
+  background: linear-gradient(5deg, #ffffff 60%, #f2f3fc 60%);
+}
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
